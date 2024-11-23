@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: service-a
-          image: <your_dockerhub_username>/service-a:latest
+          image: sahiljangra/service-a:latest
           ports:
             - containerPort: 5000
 ---
