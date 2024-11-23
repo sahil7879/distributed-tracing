@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: service-b
-          image: <your_dockerhub_username>/service-b:latest
+          image: sahiljangra/service-b:latest
           ports:
             - containerPort: 5001
 ---
