@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: service-c
+  namespace: tracing
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: service-c
+  template:
+    metadata:
+      labels:
+        app: service-c
+    spec:
+      containers:
+        - name: service-c
+          image: your-dockerhub-username/service-c:latest # Replace with your Docker Hub repo
+          ports:
+            - containerPort: 5002
+          env:
+            - name: RABBITMQ_HOST
+              value: "rabbitmq"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: service-c
+  namespace: tracing
+spec:
+  selector:
+    app: service-c
+  ports:
+    - protocol: TCP
+      port: 5002
+      targetPort: 5002
+  type: ClusterIP
