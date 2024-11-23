@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: service-c
-          image: your-dockerhub-username/service-c:latest # Replace with your Docker Hub repo
+          image: sahiljangra/service-c:latest 
           ports:
             - containerPort: 5002
           env:
