@@ -25,3 +25,6 @@ Port		Service		   Protocol Purpose
 
 
 http://localhost:16686/
+
+kubectl port-forward svc/service-a 5000:5000 -n tracing
+kubectl port-forward svc/jaeger 16686:16686 -n tracing
