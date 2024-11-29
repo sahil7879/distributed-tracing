@@ -1,4 +1,11 @@
-### to create images and push them to docker image 
+### First step
+```bash
+git clone https://github.com/sahil7879/distributed-tracing.git
+cd distributed-tracing
+docker login
+```
+
+### To create images and push them to docker image 
 
 ```bash
 docker build -t sahiljangra/service-a:latest ./service-a
@@ -58,7 +65,7 @@ rancher/jaegertracing-all-in-one:1.20.0
 How Each Port Works
 
 
-```bash
+```txt
 Port		  Service		     Protocol Purpose
 
 5775/udp	Jaeger Agent	     UDP	    Receives data from instrumented services (legacy format).
