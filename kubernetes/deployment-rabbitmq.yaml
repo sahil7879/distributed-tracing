@@ -3,6 +3,8 @@ kind: Deployment
 metadata:
   name: rabbitmq
   namespace: tracing
+  labels:
+    app: rabbitmq
 spec:
   replicas: 1
   selector:
@@ -15,21 +17,32 @@ spec:
     spec:
       containers:
         - name: rabbitmq
-          image: rabbitmq:3-management
+          image: rabbitmq:management
           ports:
-            - containerPort: 5672
-            - containerPort: 15672
+            - containerPort: 5672  # AMQP port
+            - containerPort: 15672 # Management console
+          env:
+            - name: RABBITMQ_DEFAULT_USER
+              value: "sahil"
+            - name: RABBITMQ_DEFAULT_PASS
+              value: "jangra"
 ---
 apiVersion: v1
 kind: Service
 metadata:
   name: rabbitmq
   namespace: tracing
+  labels:
+    app: rabbitmq
 spec:
-  ports:
-    - protocol: TCP
-      port: 5672
-    - protocol: TCP
-      port: 15672
   selector:
     app: rabbitmq
+  ports:
+    - name: amqp  # RabbitMQ messaging protocol (AMQP)
+      protocol: TCP
+      port: 5672
+      targetPort: 5672
+    - name: management  # RabbitMQ Management UI
+      protocol: TCP
+      port: 15672
+      targetPort: 15672
