@@ -1,3 +1,4 @@
+requests
 flask
 opentelemetry-api
 opentelemetry-sdk
