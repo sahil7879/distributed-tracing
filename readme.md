@@ -56,14 +56,23 @@ rancher/jaegertracing-all-in-one:1.20.0
 
 
 How Each Port Works
+
 Port		  Service		     Protocol Purpose
+
 5775/udp	Jaeger Agent	     UDP	    Receives data from instrumented services (legacy format).
+
 6831/udp	Jaeger Agent	     UDP	    Receives spans (Jaeger Thrift compact format).
+
 6832/udp	Jaeger Agent	     UDP	    Receives spans (Jaeger Thrift binary format).
+
 5778		  Jaeger Agent	     HTTP	    Provides a configuration endpoint for sampling.
+
 16686		  Jaeger Query	     HTTP	    Web UI for querying and visualizing traces.
+
 14268		  Jaeger Collector   HTTP	    Receives spans via HTTP (Jaeger Thrift over HTTP).
+
 14250		  Jaeger Collector   gRPC	    Receives spans via gRPC.
+
 9411		  Zipkin 		         HTTP	    Exposes a Zipkin-compatible API.
 
 
