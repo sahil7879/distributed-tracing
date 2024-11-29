@@ -21,7 +21,7 @@ def callback(ch, method, properties, body):
 
 @app.route("/service-c")
 def service_c():
-    connection = pika.BlockingConnection(pika.ConnectionParameters('rabbitmq'))
+    connection = pika.BlockingConnection(pika.ConnectionParameters('rabbitmq', 5672, '/', credentials=pika.PlainCredentials('username', 'password')))
     channel = connection.channel()
     channel.queue_declare(queue='service-c-queue')
     channel.basic_consume(queue='service-c-queue', on_message_callback=callback, auto_ack=True)
