@@ -28,7 +28,7 @@ def service_a():
         status_b = f"Failed to call service-b: {e}"
 
     # Send message to RabbitMQ
-    connection = pika.BlockingConnection(pika.ConnectionParameters('rabbitmq'))
+    connection = pika.BlockingConnection(pika.ConnectionParameters('rabbitmq', 5672, '/', credentials=pika.PlainCredentials('sahil', 'jangra')))
     channel = connection.channel()
     channel.queue_declare(queue='service-c-queue')
     channel.basic_publish(exchange='', routing_key='service-c-queue', body='Task for service-c')
