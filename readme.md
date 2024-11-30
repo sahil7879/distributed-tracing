@@ -18,6 +18,7 @@ docker push sahiljangra/service-c:latest
 
 ### to deploy all the deployment and services
 ```bash
+kubectl create namespace tracing
 kubectl apply -f deployment-jaeger.yaml
 kubectl apply -f deployment-rabbitmq.yaml
 kubectl apply -f deployment-service-a.yaml
