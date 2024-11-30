@@ -6,3 +6,4 @@ opentelemetry-exporter-jaeger
 opentelemetry-instrumentation-flask
 opentelemetry-instrumentation-requests
 pika
+opentelemetry-instrumentation-pika
